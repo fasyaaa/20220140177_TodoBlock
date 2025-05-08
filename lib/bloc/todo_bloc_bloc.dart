@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:bloc_practicum_assignment/model/todo.dart';
 import 'package:meta/meta.dart';
 
 part 'todo_bloc_event.dart';
