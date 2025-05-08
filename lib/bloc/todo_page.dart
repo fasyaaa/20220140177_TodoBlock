@@ -56,6 +56,47 @@ class TodoPage extends StatelessWidget {
                   ),
                 ],
               ),
+              Form(
+                key: _key,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        controller: _controller,
+                        decoration: InputDecoration(
+                          labelText: 'Todo',
+                          border: OutlineInputBorder(),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter a todo';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    FilledButton(
+                      onPressed: () {
+                        if (_key.currentState!.validate()) {
+                          final selectedDate =
+                              context.read<TodoBlocBloc>().state;
+                          if (selectedDate is TodoLoaded) {
+                            context.read<TodoBlocBloc>().add(
+                              TodoEventAdd(
+                                date: selectedDate.selectedDate!,
+                                title: _controller.text,
+                              ),
+                            );
+                            _controller.clear();
+                            selectedDate.selectedDate = null;
+                          }
+                        }
+                      },
+                      child: Text('Tambah'),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
