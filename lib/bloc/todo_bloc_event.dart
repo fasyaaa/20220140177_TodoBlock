@@ -9,4 +9,8 @@ final class TodoEventAdd extends TodoBlocEvent {
   TodoEventAdd({required this.date, required this.title});
 }
 
+final class TodoEventComplete extends TodoBlocEvent {
+  final int index;
 
+  TodoEventComplete({required this.index});
+}
