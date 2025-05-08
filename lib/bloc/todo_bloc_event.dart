@@ -14,3 +14,8 @@ final class TodoEventComplete extends TodoBlocEvent {
 
   TodoEventComplete({required this.index});
 }
+
+final class TodoSelectDate extends TodoBlocEvent {
+  final DateTime date;
+  TodoSelectDate({required this.date});
+}
